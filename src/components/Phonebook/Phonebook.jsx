@@ -95,7 +95,7 @@ class Phonebook extends React.Component {
     render() {
         const { filter, contacts } = this.state;
         return (
-            <div className="main">
+            <div>
                 <h2>Phonebook</h2>
                 <div>
                     <ContactForm submitHandler={this.handleFormSubmit} />
