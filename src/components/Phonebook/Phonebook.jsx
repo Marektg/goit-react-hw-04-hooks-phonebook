@@ -48,13 +48,45 @@ class Phonebook extends React.Component {
     renderContact = (filterValue, contactsArray) => {
         if (!filterValue) {
             return contactsArray.map((contact) => {
-                return (<li key={contact.id}>{contact.name}: {contact.number}<button onClick={() => {
-                    this.remove(contact.id)
-                }}>Delete</button></li>)
+                return (
+                    <li key={contact.id}
+                        style={{
+                            display: "grid",
+                            gridTemplateColumns: "2fr 1fr",
+                            columnGap: "20px",
+                            alignItems: "center",
+                        }
+                        }>
+                        {contact.name}: {contact.number}
+                        <button onClick={() => { this.remove(contact.id) }}
+                            style={
+                                {
+                                    borderRadius: "15px",
+                                    letterSpacing: "2px",
+                                    backgroundClip: "#f8b4c0",
+                                }
+                            }>
+                            Delete
+                        </button></li >)
             });
         };
         return (contactsArray.filter((el, id) => el.name.toLowerCase().includes(filterValue.toLowerCase())).map((contact) => {
-            return (<li key={contact.id}>{contact.name}: {contact.number}<button>Delete</button></li>)
+            return (<li key={contact.id}
+                style={{
+                    display: "grid",
+                    gridTemplateColumns: "2fr 1fr",
+                    columnGap: "20px",
+                    alignItems: "center",
+                }
+                }>{contact.name}: {contact.number}
+                <button onClick={() => { this.remove(contact.id) }}
+                    style={
+                        {
+                            borderRadius: "15px",
+                            letterSpacing: "2px",
+                            backgroundClip: "#f8b4c0",
+                        }
+                    }>Delete</button></li>)
         }));
     };
 
@@ -71,7 +103,7 @@ class Phonebook extends React.Component {
                 <div>
                     <h2>Contacts</h2>
                     <Filter filterHandler={this.filterContacts} />
-                    <ContactList renderHandler = {this.renderContact(filter, contacts)} />
+                    <ContactList renderHandler={this.renderContact(filter, contacts)} />
                 </div>
             </div>)
     }

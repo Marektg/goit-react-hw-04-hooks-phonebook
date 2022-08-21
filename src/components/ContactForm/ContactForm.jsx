@@ -1,5 +1,4 @@
 import React from "react";
-import styles from './ContactForm.module.css';
 
 
 class ContactForm extends React.Component {
@@ -7,8 +6,18 @@ class ContactForm extends React.Component {
     
         const { submitHandler } = this.props;
         return (
-            <form onSubmit={submitHandler}>
-                <h5>Name</h5>
+            <form onSubmit={submitHandler}
+                style={{
+                    display: "flex",
+                    flexDirection: "column",
+                alignItems: "center",
+}
+}>
+                <h5 style={{
+    marginTop: "10px",
+    marginBottom: "10px",
+    letterSpacing: "2px",
+}}>Name</h5>
                 <input
                     type="text"
                     name="name"
@@ -24,7 +33,13 @@ class ContactForm extends React.Component {
                     title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
                     required
                 />
-                <button>Add contact</button>
+                <button style={{
+                    marginTop: "10px",
+                fontSize: "12px",
+                padding: "10px",
+                backgroundColor: "#f5f5f5",
+
+}}>Add contact</button>
             </form>
 
 
