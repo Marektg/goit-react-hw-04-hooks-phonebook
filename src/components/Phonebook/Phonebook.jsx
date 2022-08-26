@@ -62,7 +62,7 @@ class Phonebook extends React.Component {
 
     renderContact = (filterValue, contactsArray) => {
         if (!filterValue) {
-            if (contactsArray === null || contactsArray.length<1) { return <li>You don't have any contacts yet</li> };
+            if (contactsArray === null || contactsArray.length<1) { return <li>You don't have any contacts yet</li> } else
             {return contactsArray.map((contact) => {
                 return (
                     <li key={contact.id}
@@ -106,10 +106,12 @@ class Phonebook extends React.Component {
                     }>Delete</button></li>)
         }));
     };
-
+    saveToLocal = (key, val) => {
+        localStorage.setItem(`${key}`, JSON.stringify(val))
+    };
     componentDidUpdate() {
         console.log("update");
-        localStorage.setItem("contacts", JSON.stringify(this.state.contacts));
+        this.saveToLocal("contacts", this.state.contacts)
     };
 
     render() {

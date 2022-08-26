@@ -1,8 +1,6 @@
 import React from "react";
 
-const saveToLocal = (key, val) => {
-    localStorage.setItem(`${ key }`, JSON.stringify(val))
-};
+
 
 
 class ContactForm extends React.Component {
