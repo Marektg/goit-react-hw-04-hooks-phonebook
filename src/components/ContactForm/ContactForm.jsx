@@ -1,7 +1,15 @@
 import React from "react";
 
+const saveToLocal = (key, val) => {
+    localStorage.setItem(`${ key }`, JSON.stringify(val))
+};
+
 
 class ContactForm extends React.Component {
+
+    
+
+
     render() {
     
         const { submitHandler } = this.props;
@@ -33,13 +41,13 @@ class ContactForm extends React.Component {
                     title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
                     required
                 />
-                <button style={{
+                <button  style={{
                     marginTop: "10px",
                 fontSize: "12px",
                 padding: "10px",
                 backgroundColor: "#f5f5f5",
 
-}}>Add contact</button>
+}} >Add contact</button>
             </form>
 
 

@@ -4,14 +4,28 @@ import ContactForm from '../ContactForm/ContactForm';
 import Filter from '../Filter/Filter';
 import ContactList from '../ContactList/ContactList';
 
+function getFromLocalStorage(key) {
+    try {
+        const localData = localStorage.getItem(key);
+        let localbazaZadan = JSON.parse(localData);
+        return localbazaZadan
+    }
+    catch (error) {
+        console.log(error.name + ": " + error.message);
+    }
+};
+let localContacts = getFromLocalStorage("contacts");
+if (localContacts === null) {
+    localContacts = [
+        { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+        { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+        { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
+        { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+    ] };
+
 class Phonebook extends React.Component {
     state = {
-        contacts: [
-            { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-            { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-            { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-            { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-        ],
+        contacts: localContacts,
         filter: '',
         name: '',
         number: '',
@@ -25,9 +39,9 @@ class Phonebook extends React.Component {
             ...this.state,
             contacts: [...this.state.contacts, { name: contactName, id: nanoid(), number: phoneNumber }],
             name: "",
-        })
-
-            ;
+        });
+        // console.log(this.state.contacts);
+        
 
         let nameField = form.elements.name;
         let numberField = form.elements.number;
@@ -41,13 +55,15 @@ class Phonebook extends React.Component {
 
     remove = (id) => {
         const newList = this.state.contacts.filter((el) => el.id !== id);
-        this.setState({ ...this.state, contacts: newList })
+        this.setState({ ...this.state, contacts: newList });
+        ;
     }
 
 
     renderContact = (filterValue, contactsArray) => {
         if (!filterValue) {
-            return contactsArray.map((contact) => {
+            if (contactsArray === null || contactsArray.length<1) { return <li>You don't have any contacts yet</li> };
+            {return contactsArray.map((contact) => {
                 return (
                     <li key={contact.id}
                         style={{
@@ -69,7 +85,8 @@ class Phonebook extends React.Component {
                             Delete
                         </button></li >)
             });
-        };
+        }
+};
         return (contactsArray.filter((el, id) => el.name.toLowerCase().includes(filterValue.toLowerCase())).map((contact) => {
             return (<li key={contact.id}
                 style={{
@@ -90,7 +107,10 @@ class Phonebook extends React.Component {
         }));
     };
 
-
+    componentDidUpdate() {
+        console.log("update");
+        localStorage.setItem("contacts", JSON.stringify(this.state.contacts));
+    };
 
     render() {
         const { filter, contacts } = this.state;
