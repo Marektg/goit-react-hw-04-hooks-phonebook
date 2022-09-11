@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/goit-react-hw-04-kooks-phonebook/static/css/main.7acaea2f.css",
-    "main.js": "/goit-react-hw-04-kooks-phonebook/static/js/main.990dd0ac.js",
+    "main.js": "/goit-react-hw-04-kooks-phonebook/static/js/main.a4be7ec8.js",
     "index.html": "/goit-react-hw-04-kooks-phonebook/index.html",
     "main.7acaea2f.css.map": "/goit-react-hw-04-kooks-phonebook/static/css/main.7acaea2f.css.map",
-    "main.990dd0ac.js.map": "/goit-react-hw-04-kooks-phonebook/static/js/main.990dd0ac.js.map"
+    "main.a4be7ec8.js.map": "/goit-react-hw-04-kooks-phonebook/static/js/main.a4be7ec8.js.map"
   },
   "entrypoints": [
     "static/css/main.7acaea2f.css",
-    "static/js/main.990dd0ac.js"
+    "static/js/main.a4be7ec8.js"
   ]
 }
