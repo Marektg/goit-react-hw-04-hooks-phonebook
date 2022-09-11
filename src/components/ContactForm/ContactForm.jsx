@@ -3,14 +3,9 @@ import React from "react";
 
 
 
-class ContactForm extends React.Component {
+const ContactForm = ({ submitHandler }) => {
 
     
-
-
-    render() {
-    
-        const { submitHandler } = this.props;
         return (
             <form onSubmit={submitHandler}
                 style={{
@@ -49,7 +44,7 @@ class ContactForm extends React.Component {
             </form>
 
 
-       ) }
+       ) 
 };
 
 export default ContactForm;

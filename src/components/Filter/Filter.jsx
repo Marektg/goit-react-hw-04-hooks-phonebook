@@ -1,13 +1,12 @@
 import React from "react";
 
-class Filter extends React.Component {
-    render() {
-        const { filterHandler } = this.props;
+const Filter = ({ filterHandler }) => {
+   
         return (
             <> <h5>Find contact by name</h5>
                 <input onChange={filterHandler}></input></>
     )
-}
+
 
 
 

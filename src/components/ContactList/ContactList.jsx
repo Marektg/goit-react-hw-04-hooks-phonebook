@@ -1,14 +1,13 @@
 import React from "react";
-class ContactList extends React.Component {
+const ContactList = ({ renderHandler }) => {
     
-    render() {
-        const { renderHandler } = this.props;
+  
         return (
             <ul>
                 {renderHandler}
             </ul>
         )
-}
+
 };
 
 export default ContactList;
